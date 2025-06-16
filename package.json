@@ -1,0 +1,95 @@
+{
+	"name": "scout",
+	"displayName": "scout",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.67.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:scout.helloWorld",
+		"onCommand:scout.myTest",
+		"onView:firstView",
+		"onView:secondView"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "scout.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "scout.myTest",
+				"title": "MYAU"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "custom-workspace",
+					"title": "Custom-Workspace",
+					"icon": "img/database-container.svg"
+				}
+			],
+			"panel": [
+				{
+					"id": "custom-panel",
+					"title": "Custom-Workspace",
+					"icon": "img/database-container.svg"
+				}
+			]
+		},
+		"views": {
+			"custom-workspace": [
+				{
+					"id": "firstView",
+					"name": "First View"
+				},
+				{
+					"id": "secondView",
+					"name": "Second View"
+				}
+			],
+			"custom-panel": [
+				{
+					"id": "thirdView",
+					"name": "Third View"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "npm run compile-tests && npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.67.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.21.0",
+		"@typescript-eslint/parser": "^5.21.0",
+		"eslint": "^8.14.0",
+		"glob": "^8.0.1",
+		"mocha": "^9.2.2",
+		"typescript": "^4.6.4",
+		"ts-loader": "^9.2.8",
+		"webpack": "^5.70.0",
+		"webpack-cli": "^4.9.2",
+		"@vscode/test-electron": "^2.1.3"
+	},
+	"volta": {
+		"node": "18.9.0"
+	}
+}
